@@ -1,0 +1,395 @@
+#container{
+    margin:10px auto;
+    background-color:#FFFFFF;
+    width:1860px;
+    height:930px;
+}
+/**
+1 left
+**/
+#Sidebar{
+    margin-top: 10px;
+    margin-right:40px;
+    background-color:#FFFFFF;
+    float:right;
+    width:340px;
+    height:910px;
+}
+
+#InfoBody{
+    background-color:#FFFFFF ;
+    width:240px;
+    height:430px;
+}
+#chooseDate{
+    background-color:#FFFFFF;
+    width:100px;
+    height:180px;
+    float: left;
+    margin-left: 10px;
+}
+#changeData{
+    background-color:#FFFFFF ;
+    width:150px;
+    height:180px;
+    float: left;
+    margin-left: 20px;
+}
+#zoomScreen{
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color:#FFFFFF;
+    float: left;
+    width:120px;
+    height:180px;
+}
+#operate{
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color:#FFFFFF;
+    float: left;
+    width:120px;
+    height:180px;
+}
+#drawChoosePointId,#analyId,#moveScreenId,#deletId{
+    opacity: 0.4;
+}
+#serchData{
+    margin-top: 10px;
+    margin-left: 0px;
+    background-color:#FFFFFF;
+    float: right;
+    width:120px;
+    height:180px;
+}
+
+#Bodysheet{
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size:18px;
+}
+
+#InfoTitle{
+    background-color:#2C3E50 ;
+    width:240px;
+    height:40px;
+}
+
+#detailBody{
+    /*margin-top: 10px;*/
+    background-color:#FFFFFF ;
+    width:340px;
+    height:550px;
+}
+
+#detailTitle{
+    background-color:#0E1A49 ;
+    width:340px;
+    height:40px;
+}
+#drawbigPie{
+    width:340px;
+    height:360px;
+    background-color:#FFFFFF ;
+}
+/**
+2 zhong!!!
+**/
+
+#mainBody{
+    margin-top: 10px;
+    margin-left:10px;
+    background-color:#FFFFFF;
+    float:left;
+    width:1450px;
+    height:910px;
+}
+
+/**
+2.1.1  power view
+**/
+#pvBody{
+    background-color: #FFFFFF;
+    float:inherit;
+    width:620px;
+    height:820px;
+    /*border: 2px solid #cccccc;*/
+}
+
+#pvTitle{
+    background-color:#2C3E50 ;
+    width:620px;
+    height:40px;
+}
+
+/*LSD图*/
+#pvPlot{
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color:#FFFFFF ;
+    width:600px;
+    height:600px;
+    border: 2px solid #cccccc;
+}
+
+/**
+2.2.1
+**/
+
+/**
+2.2  dot view
+**/
+#dvBody{
+    background-color: #FFFFFF;
+    margin-left: 10px;
+    float:left;
+    width:810px;
+    height:910px;
+    outline: none;
+}
+
+#dvTitle{
+    background-color:#2C3E50 ;
+    width:860px;
+    height:40px;
+}
+
+#scatterLeft{
+    float:left;
+    margin-top: 10px;
+    margin-left: 200px;
+    margin-right: 10px;
+    width:600px;
+    height:50px;
+    border: 2px solid #cccccc;
+}
+
+#yriver{
+    float:left;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width:184px;
+    height:600px;
+    /*border: 2px solid #cccccc;*/
+}
+
+#dvPlot{
+    float:left;
+    margin-top: 10px;
+    width:600px;
+    height:600px;
+    border: 2px solid #cccccc ;
+}
+.divide{
+    stroke : #cccccc;
+    stroke-width : 2;
+    fill : none;
+
+}
+#xriver{
+    float:inherit;
+    margin-top: 10px;
+    margin-left: 204px;
+    width:600px;
+    height:184px;
+    /*border: 2px solid #cccccc ;*/
+}
+
+.titleLable{
+    color:black;
+}
+
+.dot{
+    color:red;
+}
+.redPath{
+    stroke : red;
+    stroke-width :2;
+}
+
+/*高亮点类*/
+.yellowClass{
+    fill : yellow;
+}
+/*正常点类*/
+.normalClass{
+    /*fill : steelblue;*/
+    opacity: 0.5;
+    r : 4;
+}
+/*选点后的连线*/
+.xChooseLine{
+    stroke : red;
+    stroke-width : 3;
+}
+.yChooseLine{
+    stroke : green;
+    stroke-width : 3;
+}
+/*选择的点后的路径*/
+.xChoosePoint{
+    fill : red;
+    r : 6;
+}
+.yChoosePoint{
+    fill : green;
+    r : 6;
+}
+/*与上面对应的要被拖拽的点线*/
+.xDragChooseLine{
+    stroke : red;
+    stroke-width : 3;
+}
+.yDragChooseLine{
+    stroke : green;
+    stroke-width : 3;
+}
+.xDragChoosePoint{
+    fill : red;
+    r : 6;
+}
+.yDragChoosePoint{
+    fill : green;
+    r : 6;
+}
+.beforeDragPoint{
+    fill : gray;
+    r : 6;
+}
+.beforeDragLine{
+    stroke : gray;
+    stroke-width : 3;
+}
+
+/*单纯选择的点*/
+.xClickPoint{
+    fill : red;
+    r : 6;
+}
+.yClickPoint{
+    fill : green;
+    r : 6;
+}
+
+.leftPoint{
+    fill : red;
+    opacity: 0.1;
+}
+
+
+
+
+/*测试*/
+#testBody{
+    margin-top: 50px;
+    margin-left:10px;
+    background-color:#E0E0E0;
+    float:left;
+    width:1450px;
+    height:920px;
+}
+#isoBody{
+    background-color: #FFFFFF;
+    float:inherit;
+    width:620px;
+    height:910px;
+}
+
+#isoTitle{
+    background-color:#2C3E50 ;
+    width:620px;
+    height:40px;
+}
+#isomap{
+    float:left;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width:400px;
+    height:400px;
+    border: 2px solid #cccccc;
+}
+/*iso*/
+.isomapCircle{
+    fill : black;
+    r : 4;
+}
+.isomapLine{
+    stroke : black;
+    opacity : 0.01;
+    stroke-width : 1;
+}
+#tsneBody{
+    background-color: #FFFFFF;
+    float:inherit;
+    width:620px;
+    height:910px;
+}
+
+#tsneTitle{
+    background-color:#2C3E50 ;
+    width:620px;
+    height:40px;
+}
+#tsne{
+    float:left;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width:400px;
+    height:400px;
+    border: 2px solid #cccccc;
+}
+/*iso*/
+.tsneCircle{
+    fill : black;
+    r : 4;
+}
+.tsneLine{
+    stroke : black;
+    opacity : 0.01;
+    stroke-width : 1;
+}
+
+#hide {
+    position:absolute;left:0px;top:0px;
+    background-color:#000;
+    width:100%;  /*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+    filter:alpha(opacity=60);  /*设置透明度为60%*/
+    opacity:0.6;  /*非IE浏览器下设置透明度为60%*/
+    display:none; /* http://www.jb51.net */
+    z-Index:2;
+}
+
+.dragLinex{
+    stroke : red;
+    stroke-width : 3;
+}
+.dragLiney{
+    stroke : green;
+    stroke-width : 3;
+}
+
+.tooltip{
+    position: absolute;
+    width:auto;
+    height:auto;
+    font-family:SimSun-ExtB;
+    font-size: 14px;
+    text-align: center;
+    border:1px solid #000000;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.txt{
+    font-famliy: Arial;
+    font-size : 0.1em;
+}
+
+.detailTxt{
+    font-famliy: Arial;
+    font-size : 16px;
+}
+
+

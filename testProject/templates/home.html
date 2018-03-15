@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KNN GRAPH Exploration</title>
+
+
+	{% load staticfiles %}
+    <script> token= '{{ csrf_token }}';</script>
+
+	<link rel="stylesheet" type="text/css" href="{%static 'css/home.css'%}">
+{#    <link rel="stylesheet" type="text/css" href="{%static 'css/my-stylesheet.css'%}">#}
+    <link rel="stylesheet" type="text/css" href="{%static 'css/scatter.css'%}">
+
+    <link rel="stylesheet" type="text/css" href="{%static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/flat-ui.min.css'%}">
+
+    <script src = "{%static 'lib/d3.min.js' %}"></script>
+    <script src = "{%static 'lib/jquery-2.2.1.min.js' %}"></script>
+    <script src = "{%static 'lib/jQueryRotate.2.2.js' %}"></script>
+    <script src = "{%static 'lib/bootstrap.min.js' %}"></script>
+    <script src = "{%static 'lib/flat-ui.min.js' %}"></script>
+{#    <script src = "{%static 'lib/numeric-1.2.6.min.js' %}"></script>#}
+    <script src = "{%static 'lib/underscore-min.js' %}"></script>
+    <script src = "{%static 'lib/d3.tip.v0.6.3.js' %}"></script>
+
+    <script src = "{%static 'js/Variable.js' %}"></script>
+    <script src = "{%static 'js/buttonFunction.js' %}"></script>
+    <script src = "{%static 'js/dataExchange.js' %}"></script>
+    <script src = "{%static 'js/drawLine.js' %}"></script>
+    <script src = "{%static 'js/plotKNN.js' %}"></script>
+    <script src = "{%static 'js/plotISOMAP.js' %}"></script>
+    <script src = "{%static 'js/dotSelect.js' %}"></script>
+    <script src = "{%static 'js/Interaction.js' %}"></script>
+
+
+</head>
+<body id = "Bodysheet">
+    <div id = "hide">
+
+    </div>
+    <div id="container">
+        <div id ="mainBody">
+            <div id = "pvBody">
+                <div id = "pvPlot">
+                </div>
+
+                <div id="changeData">
+                    <hr style="position: relative;width:600px;height:2px;left:-10px;top:180px"
+                    color=#cccccc size="14"/>
+
+                    <div style="height: 40px">
+                        <p style="position:relative;left:10px;top:-30px;width:80px">k-value:</p>
+                        <input class = "form-control"
+                               style="font-size: 16px;position: relative; left:90px;top:-72px;width:80px;height: 25px"
+                               id   = "k_value"
+                               size = "4"
+                               value = 14
+                               type = "text"/>
+
+                    </div>
+
+                    <div style="height: 40px">
+                        <p style="position:relative;left:10px;top:-20px;width:80px">g-value:</p>
+                        <input class = "form-control"
+                               style="font-size: 16px;position: relative; left:90px;top:-62px;width:80px;height: 25px"
+                               id   = "g_value"
+                               size = "4"
+                               value = 0
+                               type = "text"/>
+                    </div>
+                    <div style="height: 40px">
+                        <p style="position:relative;left:10px;top:-10px;width:80px">r-value:</p>
+                        <input class = "form-control"
+                               style="font-size: 16px;position: relative; left:90px;top:-52px;width:80px;height: 25px"
+                               id   = "r_value"
+                               size = "4"
+                               value = -90
+                               type = "text"/>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm "
+                                style="position: relative;
+                                    left:90px;width:80px;height: 25px;top:0px;
+                                    padding-left:8px;padding-top: 3px;
+                                    font-size: 14px;
+                                    background-color:#8E8E8E "
+                                onclick="changeData()">Change
+                        </button>
+                    </div>
+                    <hr style="position: relative;height:203px;width:1px;left:125px;top:-214px"
+                    color=#cccccc size="14"/>
+                </div>
+                <div id = "zoomScreen">
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm " id = "zoomUpId"
+                                    style="position: relative;
+                                        left:80px;width:80px;height: 25px;top:0px;
+                                        padding-left:8px;padding-top: 2px;
+                                        font-size: 16px;
+                                        background-color:#8E8E8E "
+                                onclick="zoomUp()">+
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm " id = "zoomdownId"
+                                style="position: relative;
+                                    left:170px;width:80px;height: 25px;top:-30px;
+                                    padding-left:8px;padding-top: 2px;margin-left:20px;
+                                    font-size: 16px;
+                                    background-color:#8E8E8E "
+                                onclick="zoomDown()">-
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm " id = "moveScreenId"
+                                style="position: relative;
+                                    left:280px;width:80px;height: 25px;top:-60px;
+                                    padding-left:8px;padding-top: 2px;margin-left:20px;
+                                    font-size: 14px;
+                                    background-color:#8E8E8E "
+                                onclick="fmoveScreen()">Panning
+                        </button>
+                    </div>
+                </div>
+                <div id = "operate">
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm " id = "drawChoosePointId"
+                                style="position: relative;
+                                    left:-70px;width:80px;height: 25px;top:50px;
+                                    padding-left:8px;padding-top: 3px;margin-left:20px;
+                                    font-size: 14px;
+                                    background-color:#8E8E8E "
+                                onClick="fdrawChoosePoint()">Form Axis
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm " id = "analyId"
+                                style="position: relative;
+                                    left:40px;width:80px;height: 25px;top:20px;
+                                    padding-left:8px;padding-top: 3px;margin-left:20px;
+                                    font-size: 14px;
+                                    background-color:#8E8E8E "
+                                         onclick="fanaly()">Lasso
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm " id = "deletId"
+                            style="position: relative;
+                                left:150px;width:80px;height: 25px;top:-10px;
+                                padding-left:8px;padding-top: 3px;margin-left:20px;
+                                font-size: 14px;
+                                background-color:#8E8E8E "
+                            onclick="fdelet()">Delet
+                        </button>
+                    </div>
+                    <hr style="position: relative;width:390px;height:1px;left:-90px;top:-20px"
+                    color=#cccccc size="14"/>
+                </div>
+                <div id = "serchData">
+                    <div style="height: 70px">
+                    <p style="position:relative;left:-200px;top:103px;width:40px">Item:</p>
+                    <input class = "form-control "
+                           style="font-size: 16px;
+                           position: relative; top:60px;left: -130px; width: 120px;height: 25px"
+                           id   = "data_index"
+                           size = "2"
+                           type = "text"/>
+                    <button type="button" class="btn btn-default btn-sm "
+                        style="position: relative;
+                            left:-20px;width:80px;height: 25px;top:30px;
+                            padding-left:12px;padding-top: 3px;
+                            font-size: 14px;
+                            background-color:#8E8E8E "
+                        onclick="SearchLabel()">Search
+                    </button>
+                    </div>
+                </div>
+                <div>
+                    <hr style="position: relative;height:205px;width:2px;left:-454px;top:-23px"
+                    color=#cccccc size="14"/>
+                    <hr style="position: relative;height:205px;width:2px;left:299px;top:-250px"
+                    color=#cccccc size="14"/>
+                </div>
+
+            </div>
+
+            <div id = "dvBody" tabindex="0" >
+                <div id = "yriver">
+                </div>
+                <div id="dvPlot">
+                </div>
+                <div style="height: 40px">
+                    <p style="position:relative;left:25px;top:10px;width:80px">Y - Axis :</p>
+                    <select class = "form-control " id = "selectyAxis" onchange="changeY()"
+                            style = "position: relative;padding-top: 2px;padding-left: 2px;padding-bottom: 1px ;
+                                     width:150px;height:25px; left:25px;top:-5px;" >
+                    </select>
+                    <img src="../static/data/Vis/piture/directy.jpg" width="14" height="15"
+                         style = "position: relative;padding-top: 2px;padding-left: 2px;padding-bottom: 1px ;
+                         margin-top: 10px;left:155px;top:-60px;"/>
+                    <p style="position:relative;left:25px;top:-25px;margin-top:10px;width:80px">X - Axis :</p>
+                    <select class = "form-control " id = "selectxAxis" onchange="changeX()"
+                            style = "position: relative;padding-top: 2px;padding-left: 2px;padding-bottom: 1px ;
+                            margin-top: 10px;width:150px;height:25px; left:25px;top:-40px; " >
+                    </select>
+                    <img src="../static/data/Vis/piture/directx.jpg" width="15" height="15"
+                         style = "position: relative;padding-top: 2px;padding-left: 2px;padding-bottom: 1px ;
+                         margin-top: 10px;left:174px;top:-75px;"/>
+
+                </div>
+                <div id = "xriver">
+                </div>
+
+            </div>
+        </div>
+        <div id = "Sidebar">
+            <div id="detailBody" >
+                <div style="top: 140px; height: 550px; width: 340px;overflow-x:hidden;overflow-y:auto;" id="details" >
+
+                </div>
+            </div>
+            <div id = "drawbigPie">
+
+            </div>
+
+
+        </div>
+        <div id = "testBody">
+            <div id="chooseDate">
+                    <p style="position:relative;left:10px;top:10px">
+                        Datasets:
+                    </p>
+
+                    <select class = "form-control " id = "selectData" onchange="changeData()"
+                                     style = "position: relative;padding-top: 2px;padding-left: 2px;padding-bottom: 1px ;
+                                        width:80px;height:25px; left:100px;top:-30px; " >
+                        <option value=""></option>
+                        <option value="../static/data/Vis/Quality of Life">Quality of Life</option>
+                        <option value="../static/data/Vis/cars">cars</option>
+                        <option value="../static/data/Vis/boston_house_prices">boston_house_prices</option>
+                        <option value="../static/data/Vis/breast_cancer">breast_cancer</option>
+                        <option value="../static/data/Vis/wine">wine</option>
+                        <option value="../static/data/Vis/swissroll">swissroll</option>
+        {#                <option value="../static/data/Vis/swissroll_reduce.csv">swissroll_reduce</option>#}
+                        <option value="../static/data/Vis/mnist hand-writing pca">mnist hand-writing pca</option>
+                        <option value="../static/data/Vis/face_data pca">face_data pca</option>
+                        <option value="../static/data/Vis/mnist_two pca">mnist_two pca</option>
+                        <option value="../static/data/Vis/mnist_five pca">mnist_five pca</option>
+                        <option value="../static/data/Vis/mnist_six pca">mnist_six pca</option>
+                        <option value="../static/data/Vis/mixture pca">mixture pca</option>
+
+                    </select>
+
+                    <div style="height: 40px">
+                        <p style="position:relative;left:10px;top:-20px;margin-top: 10px;width:80px">Data Size</p>
+                        <input class = "form-control "
+                               style="font-size: 16px;
+                                   position: relative; top:-62px;left: 100px; width: 80px;height: 25px"
+                               id   = "DataSize"
+                               size = "2"
+                               type = "text"/>
+                    </div>
+
+                    <div style="height: 40px">
+                        <p style="position:relative;left:10px;top:-10px;width:80px">Dimension</p>
+                        <input class = "form-control "
+                               style="font-size: 16px;
+                                   position: relative; top:-52px;left: 100px; width: 80px;height: 25px"
+                               id   = "Dimension"
+                               size = "2"
+                               type = "text"/>
+                    </div>
+                    <div style="height: 40px">
+                        <p style="position:relative;left:50px;top:-170px;width:80px">opacity:</p>
+                        <input class = "form-control"
+                               style="font-size: 16px;position: relative; left:120px;top:-210px;width:80px;height: 25px"
+                               id   = "opacity"
+                               size = "4"
+                               value = 0.5
+                               type = "text"/>
+                    </div>
+                </div>
+            <div id = "isoBody">
+                <div id = "isoTitle">
+                    <label style="font-family: 'Helvetica Neue';color:white;font-weight: bold;
+                            position: relative;left:25px;top:2px">
+                        ISOMAP View
+                    </label>
+                </div>
+                <div id = isomap>
+
+                </div>
+                <button type="button" class="btn btn-default btn-sm "
+                        id = "whichReduce"
+                        style="position: relative;
+                        left:30px;width:120px;height: 25px;top:0px;
+                        padding-left:8px;padding-top: 3px;
+                        font-size: 14px;
+                        background-color:#8E8E8E "
+                        onclick="changeName()">change to GD
+                </button>
+            </div>
+            <div id = "tsneBody">
+                <div id = "tsneTitle">
+                    <label style="font-family: 'Helvetica Neue';color:white;font-weight: bold;
+                            position: relative;left:25px;top:2px">
+                        t-SNE View
+                    </label>
+                </div>
+                <div id = tsne>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

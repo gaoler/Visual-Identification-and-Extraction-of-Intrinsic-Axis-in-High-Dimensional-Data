@@ -1,0 +1,140 @@
+#container{
+    margin:10px auto;
+    background-color:#E0E0E0;
+    width:1875px;
+    height:940px;
+}
+
+#Sidebar{
+    margin-top: 10px;
+    margin-left:10px;
+    background-color:#E0E0E0;
+    float:left;
+    width:240px;
+    height:920px;
+}
+
+#mainBody{
+    margin-top: 10px;
+    margin-right:10px;
+    background-color:#E0E0E0;
+    float:right;
+    width:1605px;
+    height:920px;
+}
+
+#InfoBody{
+    background-color:#FFFFFF ;
+    width:240px;
+    height:320px;
+}
+
+#Bodysheet{
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size:18px;
+}
+
+#InfoTitle{
+    background-color:#2C3E50 ;
+    width:240px;
+    height:40px;
+}
+
+#detailBody{
+    margin-top: 10px;
+    background-color:#FFFFFF ;
+    width:240px;
+    height:590px;
+}
+
+#detailTitle{
+    background-color:#2C3E50 ;
+    width:240px;
+    height:40px;
+}
+
+#viewBody{
+    background-color:#E0E0E0;
+    float:left;
+    width:1100px;
+    height:920px;
+}
+
+#LSDBody{
+    background-color: #FFFFFF;
+    float:left;
+    width:565px;
+    height:630px;
+}
+
+#LSDTitle{
+    background-color:#2C3E50 ;
+    width:565px;
+    height:40px;
+}
+
+/*LSD图*/
+#LSDPlot{
+    margin-left: 52.5px;
+    margin-top: 10px;
+    background-color:#FFFFFF ;
+    width:500px;
+    height:500px;
+    border: 2px solid #cccccc;
+}
+
+#subBody{
+    background-color: #FFFFFF;
+    float:right;
+    width:525px;
+    height:630px;
+    outline: none;
+}
+
+#subTitle{
+    background-color:#2C3E50 ;
+    width:525px;
+    height:40px;
+}
+
+#subPlot{
+    margin-left: 12.5px;
+    margin-top: 10px;
+    background-color:#FFFFFF ;
+    width:500px;
+    height:500px;
+    border: 2px solid #cccccc;
+}
+
+#LSVBody{
+    float: inherit;
+    margin-top: 10px;
+    background-color:#FFFFFF;
+    width:1100px;
+    height:280px;
+}
+
+#LSVTitle{
+    background-color:#2C3E50 ;
+    width:1100px;
+    height:40px;
+}
+
+#subList{
+    float:right;
+    background-color:#FFFFFF ;
+    width:495px;
+    height:920px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#subListTitle{
+    background-color:#2C3E50 ;
+    width:495px;
+    height:40px;
+}
+
+.titleLable{
+    color:white;
+}
